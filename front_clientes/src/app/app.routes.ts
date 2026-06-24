@@ -1,10 +1,11 @@
 import { Routes } from '@angular/router';
-import { ClientesComponent } from './features/clientes.component/clientes.component';
+import { Clientes } from './features/clientes/clientes';
 
 export const routes: Routes = [
     {
         path:'',
-        component:ClientesComponent,
+        component:Clientes,
+        pathMatch:'full'
         
     }
 ];
