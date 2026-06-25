@@ -1,5 +1,6 @@
 
 <div class="table-responsive custom-table-container shadow-sm">
+  <button routerLink="/nuevocliente"></button>
   <table class="table table-hover custom-table mb-0">
     <thead>
       <tr>
@@ -13,22 +14,25 @@
       </tr>
     </thead>
     <tbody>
-   @for (cl of listaClientes; track cl.id; let idx = $index, e = $even) {
+   @for ( cliente of listaClientes; track cliente.id; let i=$index)  {
             <tr>
+          
+              
                 <td><span class="badge badge-custom bg-success-soft text-success"></span></td>
-                <th scope="row" class="fw-bold text-muted">{{ cl.cedula }}</th>
+                <th scope="row" class="fw-bold text-muted">{{ cliente.cedula }}</th>
                 <td>
                 <div class="d-flex align-items-center">
-                    <span>{{cl.nombres}}</span>
+                    <span>{{cliente.nombres}}</span>
                 </div>
                 </td>
-                <td>{{cl.direccion}}</td>
-                <td>{{cl.telefono}}</td>
-                <td class="fw-semibold text-dark">{{cl.cedula}}</td>
+                <td>{{cliente.direccion}}</td>
+                <td>{{cliente.telefono}}</td>
+                <td class="fw-semibold text-dark">{{cliente.cedula}}</td>
                 <td>
                     <button>Editar</button>
                     <button>Eliminar</button>
                 </td>
+                
             </tr>
         }
            

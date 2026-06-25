@@ -7,17 +7,21 @@ import { Icliente } from '../interfaces/icliente';
   providedIn: 'root',
 })
 export class ClienteServices {
-
-  
   apiurl=variables_ambiente.apiBaseUrl
-
-  constructor(private readonly http:HttpClient) {
-    
-    
-  }
+  constructor(private readonly http:HttpClient) {}
   todos():Observable<Icliente[]>{
-    
-    return this.http.get<Icliente[]>(this.apiurl+'/clientes')
+    return this.http.get<Icliente[]>(`${this.apiurl}/clientes`)
   }
-  
+  uno(id:number):Observable<Icliente>{
+    return this.http.get<Icliente>(`${this.apiurl}/clientes/${id}`)
+  }
+  nuevo(cliente:Icliente):Observable<Icliente>{
+    return this.http.post<Icliente>(`${this.apiurl}/clientes`,cliente)
+  }
+  actualizar(id:number, cliente:Icliente):Observable<Icliente>{
+    return this.http.patch<Icliente>(`${this.apiurl}/clientes/${id}`, cliente)
+  }
+  eliminar(id:number):Observable<string>{
+    return this.http.delete<string>(`${this.apiurl}/clientes/${id}`)
+  }
 }

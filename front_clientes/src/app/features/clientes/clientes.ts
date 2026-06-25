@@ -1,50 +1,31 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { ClienteServices } from '../../core/services/cliente.services';
 import { Icliente } from '../../core/interfaces/icliente';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
-
 @Component({
   selector: 'app-clientes',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './clientes.html',
   styleUrl: './clientes.css',
 })
 export class Clientes {
-listaClientes:any[] = []
-/**
- *
- */
-constructor(private readonly clienteServicio:ClienteServices) {
-}
-  private readonly rutas = inject(Router)
-
-  
+listaClientes:Icliente[] = []
+private readonly clienteServicio = inject(ClienteServices)
+private readonly detector = inject(ChangeDetectorRef)
+private readonly rutas = inject(Router)  
   ngOnInit(): void {
-   
-
       this.cargaLista()
   }
    async cargaLista(){
-    
-      this.clienteServicio.todos().subscribe(
-          {
-            next: (lista:any[])=>{
-              
+      this.clienteServicio.todos().subscribe({
+            next: (lista)=>{
               this.listaClientes = lista
-              
-              this.listaClientes.forEach(cl => {
-                console.log(cl)
-              });
-
+              this.detector.detectChanges()
             },
             error:(errores)=>{
               console.log(errores)
-              
-            }
-          }
-        )
+            }})
   }
   
 }
