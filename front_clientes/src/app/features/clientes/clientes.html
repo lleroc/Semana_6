@@ -1,7 +1,10 @@
 
 <div class="table-responsive custom-table-container shadow-sm">
-  <button routerLink="/nuevocliente"></button>
-  <table class="table table-hover custom-table mb-0">
+  <button routerLink="/nuevocliente" class="btn btn-outline-primary">Nuevo Clientes</button>
+
+  <button (click)="imprimirPDF()" class="btn btn-outline-secondary"> Imprimir Lista PDF</button>
+
+  <table class="table table-hover custom-table mb-0 display" id="tabla_Clientes">
     <thead>
       <tr>
         <th scope="col">#</th>
