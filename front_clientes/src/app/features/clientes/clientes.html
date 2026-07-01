@@ -32,8 +32,9 @@
                 <td>{{cliente.telefono}}</td>
                 <td class="fw-semibold text-dark">{{cliente.cedula}}</td>
                 <td>
-                    <button>Editar</button>
-                    <button>Eliminar</button>
+                    <!--<button routerLink="[editarcliente/'cliente.id']" >Editar</button>-->
+                    <button [routerLink]="['/editarcliente/',cliente.id]" >Editar</button>
+                    <button [routerLink]="['/eliminarcliente/',cliente.id]">Eliminar</button>
                 </td>
                 
             </tr>

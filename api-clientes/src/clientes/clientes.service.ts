@@ -57,7 +57,7 @@ export class ClientesService {
     const cliete = await this.findOne(id)
     await this.clienteRepository.remove(cliete)
     return{
-      message:"Cliente eliminado con exito"
+      message:"ok"
     }
   }
 }

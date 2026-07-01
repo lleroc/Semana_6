@@ -1,1 +1,89 @@
-<p>editarcliente works!</p>
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Editar Cliente</h4>
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="frmCliente" novalidate (submit)="grabar()">
+        <div class="mb-3">
+          <label for="cedula" class="form-label">Cédula</label>
+          <input  type="text" class="form-control" placeholder="Ingrese la cédula" required formControlName="cedula" />
+          @if (frmCliente.get('cedula')?.hasError('required') 
+           && frmCliente.get('cedula')?.touched) {
+            <small class="text-danger">
+              La cédula es obligatoria y debe tener 10 dígitos.
+            </small>
+          }
+         
+        </div>
+
+        <div class="mb-3">
+          <label for="nombres" class="form-label">Nombres</label>
+          <input type="text" class="form-control" placeholder="Ingrese los nombres" required formControlName="nombres"
+          />
+         @if (frmCliente.get('nombres')?.hasError('required') && frmCliente.get('nombres')?.touched)  {
+            <small class="text-danger">
+              El nombre es obligatorio.
+            </small>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="direccion" class="form-label">Dirección</label>
+          <input type="text" class="form-control" placeholder="Ingrese la dirección" required formControlName="direccion" />
+
+          @if (frmCliente.get('direccion')?.hasError('required') && frmCliente.get('direccion')?.touched)  {
+            <small class="text-danger">
+              La dirección es obligatoria.
+            </small>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Teléfono</label>
+          <input type="text" class="form-control" placeholder="Ingrese el teléfono" required formControlName="telefono" />
+
+          @if (frmCliente.get('telefono')?.hasError('required') && frmCliente.get('telefono')?.touched)  {
+            <small class="text-danger">
+              El teléfono es obligatorio.
+            </small>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="correo" class="form-label">Correo</label>
+          <input
+            type="email"
+            id="correo"
+            name="correo"
+            class="form-control"
+            placeholder="Ingrese el correo"
+            required
+            formControlName="correo"
+          />
+
+            @if (frmCliente.get('correo')?.hasError('required')  && frmCliente.get('correo')?.touched)  {
+            <small class="text-danger">
+              Ingrese un correo válido.
+            </small>
+          }
+        </div>
+
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-success" [disabled]="!frmCliente.valid" >
+            Guardar
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            routerLink="/clientes"
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

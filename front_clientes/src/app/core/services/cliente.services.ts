@@ -21,7 +21,7 @@ export class ClienteServices {
   actualizar(id:number, cliente:Icliente):Observable<Icliente>{
     return this.http.patch<Icliente>(`${this.apiurl}/clientes/${id}`, cliente)
   }
-  eliminar(id:number):Observable<string>{
-    return this.http.delete<string>(`${this.apiurl}/clientes/${id}`)
+  eliminar(id:number):Observable<{message: string}>{
+    return this.http.delete<{message: string}>(`${this.apiurl}/clientes/${id}`)
   }
 }
