@@ -12,9 +12,12 @@ export const routes: Routes = [
     },
      {
         path:'clientes',
-        component:Clientes,
-        pathMatch:'full'
-    },
+        loadChildren:()=>
+            import ('./features/clientes/clientes.route').then(
+                m => m.CLIENTE_ROUTES
+            ),
+    } 
+    /*,
     {
         path:'nuevocliente',
         component:Nuevocliente,
@@ -31,5 +34,5 @@ export const routes: Routes = [
         path:'eliminarcliente/:id',
         component:Eliminarcliente,
         pathMatch:'full'
-    }
+    }*/
 ];
